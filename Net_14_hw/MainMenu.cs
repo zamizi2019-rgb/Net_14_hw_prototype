@@ -1,5 +1,3 @@
-﻿using System;
-
 public static class Menu
 {
     public static void MainMenu()
@@ -12,7 +10,7 @@ public static class Menu
             Console.WriteLine("2. Register");
             Console.WriteLine("3. Exit");            
             int choice;
-            if (!int.TryParse(Console.ReadLine(), out choice))//проверка вводад
+            if (!int.TryParse(Console.ReadLine(), out choice) || choice<1 || choice>3))//проверка вводад
             {
                 continue;
             }
@@ -51,7 +49,7 @@ public static class Menu
             Console.WriteLine("4. Change info");
             Console.WriteLine("5. Exit");
             int choice;
-            if (!int.TryParse(Console.ReadLine(), out choice))
+            if (!int.TryParse(Console.ReadLine(), out choice) || choice<1 || choice>5))
             {
                 continue;
             }
