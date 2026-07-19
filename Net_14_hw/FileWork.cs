@@ -25,9 +25,9 @@ public static class FileManager
     }
     public static void LoadQuizzes()
     {
-        GameData.HistoryQuiz = LoadQuiz("Quizzes/history.json");
-        GameData.BiologyQuiz = LoadQuiz("Quizzes/biology.json");
-        GameData.GeographyQuiz = LoadQuiz("Quizzes/geography.json");
+        GameData.HistoryQuiz = LoadQuiz("History.json");
+        GameData.BiologyQuiz = LoadQuiz("Biology.json");
+        GameData.GeographyQuiz = LoadQuiz("Geography.json");
     }
     private static QuizData LoadQuiz(string path)
     {
