@@ -4,9 +4,7 @@
     public string Password { get; set; }
     public DateTime Birthday { get; set; }
     public List<QuizResult> Results { get; set; } = new List<QuizResult>();//у каждого юзера хранятся свои результаты тестирований
-
-    public User() {}
-
+    public User() {}//для сериализации пустой конструктор
     public User(string login, string password, DateTime birthday)
     {
         Login = login;
