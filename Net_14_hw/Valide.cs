@@ -4,7 +4,7 @@
     {
         foreach (char c in login)
         {
-            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')))
+            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (login.Length < 4)))//минимальная длина логина
             {
                 return false;
             }
@@ -16,7 +16,7 @@
     {
         foreach (char c in password)
         {
-            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')))
+            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (password.Length<4 )))//(добавлена проверка на минимальную длину пароля
             {
                 return false;
             }
