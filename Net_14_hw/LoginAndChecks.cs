@@ -1,4 +1,3 @@
-﻿
 public static class LoginRegister
 {
     public static User Login()
@@ -6,7 +5,7 @@ public static class LoginRegister
         Console.Write("Login: ");
         string login = Console.ReadLine();
 
-        if (!Valide.UserExists(login))
+        if (!Valide.UserExists(login))//если юзера не существует с таким логином. значит не нйаден
         {
             Console.WriteLine("User not found");
             return null;
@@ -33,7 +32,7 @@ public static class LoginRegister
         Console.Write("Login: ");
         string login = Console.ReadLine();
 
-        if (Valide.UserExists(login))
+        if (Valide.UserExists(login))//для индивидуальности, 2 логина одинаковых буть не могут
         {
             Console.WriteLine("User with this login already exists, try another one");
             return;
@@ -41,7 +40,7 @@ public static class LoginRegister
 
         if (!Valide.ValidUser(login))
         {
-            Console.WriteLine("Login has to contain only letters and digits");
+            Console.WriteLine("Login has to contain only letters and digits and has to be at least 4 characters long");
             return;
         }
 
@@ -50,7 +49,7 @@ public static class LoginRegister
 
         if (!Valide.ValidPassword(password))
         {
-            Console.WriteLine("Password has to contain only letters and digits");
+            Console.WriteLine("Password has to contain only letters and digits and has to be at least 4 characters long");
             return;
         }
 
