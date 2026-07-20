@@ -3,7 +3,7 @@
     public string Login { get; set; }
     public string Password { get; set; }
     public DateTime Birthday { get; set; }
-    public List<QuizResult> Results { get; set; } = new List<QuizResult>();
+    public List<QuizResult> Results { get; set; } = new List<QuizResult>();//у каждого юзера хранятся свои результаты тестирований
 
     public User() {}
 
@@ -18,7 +18,7 @@
 
 public class QuizResult
 {
-    public string Topic { get; set; }
+    public string Topic { get; set; }//название темы
     public int Score { get; set; }
     public DateTime Date { get; set; }
 }
@@ -38,6 +38,6 @@ public class QuizQuestion
 
 public class QuizData
 {
-    public string Topic { get; set; }
+    public string Topic { get; set; }//просто название биология, история , географяф
     public List<QuizQuestion> Questions { get; set; }
 }
