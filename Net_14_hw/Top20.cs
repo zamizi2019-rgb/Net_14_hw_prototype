@@ -1,4 +1,4 @@
-﻿public static class TopManager
+public static class TopManager
 {
     public static void Top20()
     {
@@ -39,7 +39,7 @@
 
         List<TopResult> top = new List<TopResult>();
 
-        foreach (User user in GameData.Users)
+        foreach (User user in GameData.Users)//тут он собирает всех учеников и их топовый результат по предмету
         {
             int bestScore = -1;
             foreach (QuizResult result in user.Results)
@@ -49,13 +49,13 @@
                     bestScore = result.Score;
                 }
             }
-            if (bestScore != -1)//если результат больше -1, значит кто то прошел в топ 20
+            if (bestScore != -1)
             {
                 top.Add(new TopResult { Login = user.Login, Score = bestScore });
             }
         }
 
-        top = top.OrderByDescending(x => x.Score).ToList();//сортировка топа 
+        top = top.OrderByDescending(x => x.Score).ToList();//сортировка топа ( из всех учеников берут топ 20 результатов
 
         Console.WriteLine($"Top20 - {topic}:");
         int count = Math.Min(20, top.Count);
@@ -65,6 +65,10 @@
             Console.WriteLine($"{i + 1}. {top[i].Login} - {top[i].Score}/20");
         }
 
+        if (count == 0)
+            Console.WriteLine("No results");
+    }
+}
         if (count == 0)
             Console.WriteLine("No results");
     }
