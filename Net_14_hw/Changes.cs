@@ -1,6 +1,6 @@
 ﻿public static class Changes
 {
-    public static void ChangeSettings(User user)
+    public static void ChangeSettings(User user)//изменение на выбор + проверки на правильность(функции из другого файла)
     {
         Console.WriteLine("\n1. Change password");
         Console.WriteLine("2. Change birth date");
