@@ -172,12 +172,86 @@ public static class Quiz
             Console.WriteLine("No results.");
             return;
         }
-
         foreach (QuizResult result in user.Results)//показывает твои прошлые результаты
         {
             Console.WriteLine($"{result.Date}: {result.Topic} - {result.Score}/20");
         }
     }
-}
+    public static void ShowQuestions(QuizData quiz)
+    {
+        Console.Clear();
+        for (int i = 0; i < quiz.Questions.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {quiz.Questions[i].Text}");
+        }
+        Console.WriteLine("\nPress any key...");
+        Console.ReadKey();
+    }
+    public static void AddQuestion(QuizData quiz)
+    {
+        Console.Clear();
+        QuizQuestion question = new QuizQuestion();
+        Console.Write("Enter question: ");
+        question.Text = Console.ReadLine();
+        question.Answers = new List<string>();
+        for (int i = 0; i < 4; i++)
+        {
+            Console.Write($"Answer {i + 1}: ");
+            question.Answers.Add(Console.ReadLine());
+        }
+        Console.Write("Correct answer (1-4): ");
+        int correct;
+        while (!int.TryParse(Console.ReadLine(), out correct) || correct < 1 || correct > 4)
+        {
+            Console.WriteLine("Enter a number from 1 to 4.");
+        }
+        question.CorrectIndex = correct - 1;
+        quiz.Questions.Add(question);
+        Console.WriteLine("Question added successfully.");
+        Console.ReadKey();
+    }
+    public static void EditQuestion(QuizData quiz)
+    {
+        Console.Clear();
+        ShowQuestions(quiz);
+        Console.Write("Enter question number: ");
+        int number;
+        while (!int.TryParse(Console.ReadLine(), out number) || number < 1 || number > quiz.Questions.Count)
+        {
+            Console.WriteLine("Enter a valid number.");
+        }
+        Console.Clear();
+        Console.Write("New question: ");
+        quiz.Questions[number - 1].Text = Console.ReadLine();
+        for (int i = 0; i < 4; i++)
+        {
+            Console.Write($"New answer {i + 1}: ");
+            quiz.Questions[number - 1].Answers[i] = Console.ReadLine();
+        }
+        Console.Write("Correct answer (1-4): ");
+        int correct;
+        while (!int.TryParse(Console.ReadLine(), out correct) || correct < 1 || correct > 4)
+        {
+            Console.WriteLine("Enter a number from 1 to 4.");
+        }
+        quiz.Questions[number - 1].CorrectIndex = correct - 1;
+        Console.WriteLine("Question edited successfully.");
+        FileManager.SaveQuizzes();
+        Console.ReadKey();
+    }
+    public static void DeleteQuestion(QuizData quiz)
+    {
+        Console.Clear();
+        ShowQuestions(quiz);
+        Console.Write("Enter question number: ");
+        int number;
+        while (!int.TryParse(Console.ReadLine(), out number) || number < 1 || number > quiz.Questions.Count)
+        {
+            Console.WriteLine("Enter a valid number.");
+        }
+        quiz.Questions.RemoveAt(number - 1);//т.к. начинаем с индекса ноль, поэтому для индекса юзаем -1
+        FileManager.SaveQuizzes();
+        Console.WriteLine("Question deleted successfully.");
+        Console.ReadKey();
     }
 }
