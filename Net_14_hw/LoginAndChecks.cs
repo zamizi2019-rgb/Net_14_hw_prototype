@@ -68,4 +68,27 @@ public static class LoginRegister
 
         Console.WriteLine("Successfull registration!");
     }
+    public static Admin LoginAdmin()
+    {
+        Console.Write("Login: ");
+        string login = Console.ReadLine();
+        if (!Valide.AdminExists (login))//если нет админа, то просто возвращаем нулл
+        {
+            Console.WriteLine("User not found");
+            return null;
+        }
+        Console.Write("Password: ");
+        string password = Console.ReadLine();
+
+        foreach (Admin admin in GameData.Admins)
+        {
+            if (admin.Login == login && admin.Password == password)
+            {
+                Console.WriteLine("Successfull entry!");
+                return admin;
+            }
+        }
+        Console.WriteLine("Incorrect password");
+        return null;
+    }
 }
