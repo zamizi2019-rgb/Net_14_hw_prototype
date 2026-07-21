@@ -4,7 +4,7 @@
     {
         foreach (char c in login)
         {
-            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (login.Length <= 4)))//минимальная длина логина
+            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (login.Length < 4)))
             {
                 return false;
             }
@@ -16,7 +16,7 @@
     {
         foreach (char c in password)
         {
-            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (password.Length <= 4)))//(добавлена проверка на минимальную длину пароля
+            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || (password.Length < 4)))
             {
                 return false;
             }
@@ -26,11 +26,11 @@
 
     public static bool CheckBirthday(string date, out DateTime birthday)
     {
-        if (!DateTime.TryParse(date, out birthday))//проверка на дата ли эьто
+        if (!DateTime.TryParse(date, out birthday))
         {
             return false;
         }
-        if (birthday > DateTime.Now)//провнерка на то что эта дата , до нынешней
+        if (birthday > DateTime.Now)
         {
             return false;
         }
@@ -38,12 +38,24 @@
         return true;
     }
 
-    public static bool UserExists(string login)//существует ли пользователь с таким логином уже
+    public static bool UserExists(string login)
     {
         foreach (User user in GameData.Users)
         {
             if (user.Login == login)
-            { 
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static bool AdminExists(string login)
+    {
+        foreach (Admin admin in GameData.Admins)
+        {
+            if (admin.Login == login)
+            {
                 return true;
             }
         }
