@@ -49,4 +49,44 @@
             return;
         }
     }
+    public static void EditQuiz(QuizData quiz)
+    {
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine($"===== {quiz.Topic} =====");
+            Console.WriteLine("1. Show questions");
+            Console.WriteLine("2. Add question");
+            Console.WriteLine("3. Edit question");
+            Console.WriteLine("4. Delete question");
+            Console.WriteLine("5. Exit");
+
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 6)
+            {
+                Console.WriteLine("Invalid choice");
+            }
+
+            if (choice == 1)
+            {
+                Quiz.ShowQuestions(quiz);
+            }
+            else if (choice == 2)
+            {
+                Quiz.AddQuestion(quiz);
+            }
+            else if (choice == 3)
+            {
+                Quiz.EditQuestion(quiz);
+            }
+            else if (choice == 4)
+            {
+                Quiz.DeleteQuestion(quiz);
+            }
+            else if (choice == 5)
+            {
+                return;
+            }
+        }
+    }
 }
