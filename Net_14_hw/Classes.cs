@@ -4,7 +4,9 @@
     public string Password { get; set; }
     public DateTime Birthday { get; set; }
     public List<QuizResult> Results { get; set; } = new List<QuizResult>();//у каждого юзера хранятся свои результаты тестирований
-    public User() {}//для сериализации пустой конструктор
+
+    public User() {}
+
     public User(string login, string password, DateTime birthday)
     {
         Login = login;
@@ -16,7 +18,7 @@
 
 public class QuizResult
 {
-    public string Topic { get; set; }//название темы
+    public string Topic { get; set; }
     public int Score { get; set; }
     public DateTime Date { get; set; }
 }
@@ -38,4 +40,9 @@ public class QuizData
 {
     public string Topic { get; set; }//просто название биология, история , географяф
     public List<QuizQuestion> Questions { get; set; }
+}
+public class Admin
+{
+    public string Login { get; set; }
+    public string Password { get; set; }
 }
